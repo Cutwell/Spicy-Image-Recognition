@@ -27,9 +27,9 @@ def generator(path):
     
     matrix = numpy.array(monochrome_image)
     flat_matrix = [x for sets in matrix for x in sets]
-
+    
     binary_matrix = []
-    min_value = min(flat_matrix)
+    min_value = sum(flat_matrix)/len(flat_matrix)
 
     for value in flat_matrix:
         binary_matrix += [1] if value > min_value else [0]
@@ -93,7 +93,7 @@ if __name__ == '__main__':
         'dataset/8.png',
         'dataset/9.png',
     ]
-    target_image_path = 'dataset/unknown5.png'
+    target_image_path = 'dataset/unknown4.png'
 
     data_set = generate_data_set(data_set_paths)
 
