@@ -8,3 +8,5 @@ Original code, completely written from scratch. Works best with binary (ie.: two
 2. Convert this data set into a set of matrices.
 3. Take an unlabelled photo and convert it into a matrix.
 4. Compare each item in the data set with the unknown image, and determine percentage similarity.
+
+ - All images are converted to black and white binary matrices.

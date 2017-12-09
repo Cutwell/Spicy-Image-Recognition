@@ -10,6 +10,7 @@ import ntpath
 import difflib
 from PIL import Image
 import operator
+import numpy
 
 def generator(path):
     '''Take a file path and return a matrix.
@@ -21,12 +22,19 @@ def generator(path):
         flat_matrix: A flattened list of pixel values from the image.
 
     '''
-
     image = Image.open(path, 'r')
-    matrix = list(image.getdata())
+    monochrome_image = image.convert('L')
+    
+    matrix = numpy.array(monochrome_image)
     flat_matrix = [x for sets in matrix for x in sets]
 
-    return flat_matrix
+    binary_matrix = []
+    min_value = min(flat_matrix)
+
+    for value in flat_matrix:
+        binary_matrix += [1] if value > min_value else [0]
+
+    return binary_matrix
 
 def generate_data_set(file_paths):
     '''Generate a labelled data set from a list of file paths.
